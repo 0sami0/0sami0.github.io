@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Portfolio</title>
+    <title>Sami Hilali - Software Architect & AI Product Builder</title>
+    <link rel="icon" href="./assets/favicon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -48,226 +48,190 @@
       import React from 'react';
       import ReactDOM from 'react-dom/client';
 
-      // --- From constants.ts ---
+      // --- Data ---
+      const staticData = {
+          personalInfo: {
+            // TODO: Replace with your professional email address
+            email: "shilali003@gmail.com",
+            socials: {
+              // TODO: Replace with your GitHub profile URL
+              github: "https://github.com/0sami0",
+              // TODO: Replace with your LinkedIn profile URL
+              linkedin: "https://www.linkedin.com/in/sami-hilali-54ba311a5",
+            }
+          },
+          projects: {
+              p1: {
+                imageUrl: "./assets/project1.png",  // Changed from "/assets/project1.png"
+                sourceUrl: "https://github.com/0sami0/gestion-de-stock", 
+              },
+              p2: {
+                 // TODO: Add a diagram showing the project's workflow to assets/project2.png
+                imageUrl: "./assets/project2.png",  // Changed from "/assets/project2.png"
+                sourceUrl: "https://github.com/0sami0/ai-content-creation-pipeline",
+                youtubeUrl: "https://www.youtube.com/@dailynews-l3i5c/shorts",
+              },
+              p3: {
+                // TODO: Add a screenshot of the teacher's interface to assets/project3.png
+                imageUrl: "./assets/project3.png",  // Changed from "/assets/project3.png"
+                sourceUrl: "https://github.com/0sami0/ai-career-assessment-webapp",
+              },
+              p4: {
+                // TODO: Add a screenshot for the project to assets/project4.png
+                imageUrl: "./assets/project4.png",  // Changed from "/assets/project4.png"
+                sourceUrl: "https://github.com/0sami0/avito_bot_scraper",
+              }
+          }
+      };
+
       const content = {
         en: {
           navLinks: [
             { name: 'About', id: 'about' },
-            { name: 'Experience', id: 'experience' },
             { name: 'Projects', id: 'projects' },
             { name: 'Contact', id: 'contact' },
           ],
-          header: { resume: 'Resume' },
+          header: { 
+            githubProfile: "GitHub Profile"
+          },
           personalInfo: {
-            name: "Alex Bryant",
-            title: "Senior Frontend Engineer",
-            bio: "I'm a frontend engineer specializing in building exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at Innovate Inc. With over 8 years of experience in the field, I have a deep passion for modern web technologies and a keen eye for design. I thrive on turning complex problems into beautiful, intuitive, and performant user interfaces.",
-            email: "alex.bryant.dev@email.com",
-            socials: {
-              github: "https://github.com",
-              linkedin: "https://linkedin.com",
+            name: "Sami Hilali",
+            title: "Software Architect & AI Product Builder",
+            philosophy: "I'm not just a developer; I'm a builder. I see my university not as a classroom, but as an incubator for solving real-world problems. My passion lies in identifying inefficiencies and building robust, intelligent systems to fix them. Whether it's automating a content pipeline with AI or digitizing a decades-old paper process, my focus is always on creating solutions that are not just technically elegant, but also practical and valuable to the end-user. I am currently focused on building scalable software-as-a-service (SaaS) products.",
+          },
+          skills: {
+              "Languages": ["Python", "PHP", "Java", "JavaScript", "SQL"],
+              "Frameworks & Libraries": ["Django", "Next.js", "JavaFX", "Pygame", "Manim", "MoviePy", "Playwright"],
+              "Databases": ["MySQL", "SQLite"],
+              "Tools & Platforms": ["Git", "GitHub", "MetaTrader 5 API", "OpenAI API", "ElevenLabs API", "FFMPEG"]
+          },
+          hero: {
+            headline: "Sami Hilali.",
+            subheadline: "I build intelligent software solutions that automate processes and create tangible value for businesses.",
+            buttons: {
+                github: "View My Work on GitHub",
+                linkedin: "Connect on LinkedIn",
+                contact: "Contact Me"
             }
           },
-          skills: ["TypeScript", "React", "Next.js", "Node.js", "GraphQL", "Tailwind CSS", "Figma", "Firebase", "AWS"],
-          hero: {
-            greeting: "Hi, my name is",
-            headline: "Alex Bryant.",
-            subheadline: "I build things for the web.",
-            intro: "I'm a senior frontend engineer specializing in crafting performant, accessible, and beautiful web applications. I love bringing ideas to life with code.",
-            button: "Get In Touch",
-          },
           about: {
-            title: "About Me",
-            techIntro: "Here are a few technologies I've been working with recently:",
-          },
-          experience: {
-            title: "Where I've Worked",
-            experiences: [
-              {
-                role: "Senior Frontend Engineer",
-                company: "Innovate Inc.",
-                period: "2020 - Present",
-                description: [
-                  "Led the development of a new design system, improving component reusability and development speed by 30%.",
-                  "Architected and built the frontend for a flagship product, serving over 1 million users.",
-                  "Mentored junior engineers, conducting code reviews and promoting best practices in React and TypeScript.",
-                ],
-              },
-              {
-                role: "Frontend Developer",
-                company: "Tech Solutions",
-                period: "2017 - 2020",
-                description: [
-                  "Developed and maintained user-facing features for a large-scale SaaS application using React and Redux.",
-                  "Collaborated with UI/UX designers to translate wireframes into high-quality, responsive code.",
-                  "Improved application performance by 20% through code splitting and lazy loading techniques.",
-                ],
-              },
-              {
-                role: "Web Developer",
-                company: "Creative Agency",
-                period: "2015 - 2017",
-                description: [
-                  "Built custom WordPress themes and plugins for a diverse range of clients.",
-                  "Worked closely with clients to gather requirements and deliver projects on time and within budget.",
-                  "Gained foundational experience in HTML, CSS, JavaScript, and PHP.",
-                ],
-              },
-            ],
+            title: "My Philosophy",
+            techIntro: "My technical toolkit includes:",
           },
           projects: {
-            title: "Things I've Built",
+            title: "Featured Products & Solutions",
             featured: "Featured Project",
             projects: [
               {
-                title: "Project Alpha",
-                description: "A comprehensive web application for managing enterprise-level data analytics. Features a dynamic dashboard, real-time data visualization, and a robust user authentication system.",
-                tags: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL"],
-                imageUrl: "https://picsum.photos/seed/alpha/600/400",
-                liveUrl: "#",
-                sourceUrl: "#",
+                title: "Gestion-de-Stock: A Multi-Interface Stock Management System",
+                description: "A complete desktop application developed for the Moroccan institution FSR to digitize and automate their stock management, from supplier invoicing to generating delivery receipts. Key features include role-based access, automated document generation, and full product lifecycle tracking.",
+                tags: ["JavaFX", "MySQL", "Desktop App", "Enterprise Solution"],
               },
               {
-                title: "Project Beta",
-                description: "An e-commerce platform with a focus on user experience and performance. Integrated with Stripe for payments and built with a headless CMS for easy content management.",
-                tags: ["Next.js", "Tailwind CSS", "Stripe", "GraphQL", "Vercel"],
-                imageUrl: "https://picsum.photos/seed/beta/600/400",
-                liveUrl: "#",
-                sourceUrl: "#",
+                title: "AI-Powered Content Creation Pipeline",
+                description: "An automated system that transforms raw news articles into engaging, video-ready content by leveraging multiple AI services for scripting, voice-over, and image generation. The pipeline uses the News API, GPT for scripts, ElevenLabs for voice, and Python for automated video assembly.",
+                tags: ["Python", "AI/ML", "GPT", "ElevenLabs API", "Automation"],
               },
               {
-                title: "Project Gamma",
-                description: "A collaborative real-time document editor inspired by Google Docs, built with WebSockets for seamless multi-user interaction and a clean, minimalist UI.",
-                tags: ["React", "Firebase", "WebSockets", "TipTap"],
-                imageUrl: "https://picsum.photos/seed/gamma/600/400",
-                liveUrl: "#",
+                title: "Avito Bot & AI Deal Analyzer",
+                description: "An intelligent bot that scrapes Morocco's largest marketplace (Avito.ma), analyzes listings with AI to identify profitable flipping opportunities, and saves the data to a structured database. Key features include advanced web scraping using Playwright, AI-powered analysis for resale potential, full automation of market research, and data storage in a SQLite database.",
+                tags: ["Python", "Playwright", "AI/ML", "SQLite", "Web Scraping"],
+              },
+              {
+                title: "AI Career Assessment Webapp",
+                description: "A full-stack web application that recommends ideal careers by engaging users in a dynamic conversation, leveraging an AI with memory to personalize the experience. Features a modern Next.js frontend and a powerful Django backend.",
+                tags: ["Next.js", "Django", "OpenAI API", "Full-Stack"],
               },
             ],
           },
           contact: {
-            preTitle: "04. What's Next?",
-            title: "Get In Touch",
-            paragraph: "I'm currently open to new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll do my best to get back to you!",
-            button: "Say Hello",
+            preTitle: "Let's Connect",
+            title: "Let's Build Something Valuable Together",
+            paragraph: "I am currently developing my own SaaS products and am open to discussing freelance or consulting opportunities for challenging projects. If you have a business problem that can be solved with software, let's talk.",
+            button: "Send an Email",
           },
           footer: {
-            credit: "Designed & Built by Alex Bryant",
+            credit: "Designed & Built by Sami Hilali",
           },
         },
         fr: {
           navLinks: [
-            { name: 'À propos', id: 'about' },
-            { name: 'Expérience', id: 'experience' },
+            { name: 'À Propos', id: 'about' },
             { name: 'Projets', id: 'projects' },
             { name: 'Contact', id: 'contact' },
           ],
-          header: { resume: 'CV' },
+          header: { 
+            githubProfile: "Profil GitHub"
+          },
           personalInfo: {
-            name: "Alex Bryant",
-            title: "Ingénieur Frontend Senior",
-            bio: "Je suis un ingénieur frontend spécialisé dans la création d'expériences numériques exceptionnelles. Actuellement, je me concentre sur la création de produits accessibles et centrés sur l'humain chez Innovate Inc. Avec plus de 8 ans d'expérience, j'ai une passion pour les technologies web modernes et un œil pour le design. J'aime transformer des problèmes complexes en interfaces utilisateur belles, intuitives et performantes.",
-            email: "alex.bryant.dev@email.com",
-            socials: {
-              github: "https://github.com",
-              linkedin: "https://linkedin.com",
+            name: "Sami Hilali",
+            title: "Architecte Logiciel & Concepteur de Produits IA",
+            philosophy: "Je ne suis pas seulement un développeur ; je suis un bâtisseur. Je vois mon université non pas comme une salle de classe, mais comme un incubateur pour résoudre des problèmes du monde réel. Ma passion consiste à identifier les inefficacités et à construire des systèmes robustes et intelligents pour y remédier. Qu'il s'agisse d'automatiserr une chaîne de production de contenu avec l'IA ou de numériser un processus papier vieux de plusieurs décennies, mon objectif est toujours de créer des solutions qui ne sont pas seulement techniquement élégantes, mais aussi pratiques et précieuses pour l'utilisateur final. Je me concentre actuellement sur la création de produits logiciels en tant que service (SaaS) évolutifs.",
+          },
+          skills: {
+              "Langages": ["Python", "PHP", "Java", "JavaScript", "SQL"],
+              "Frameworks & Bibliothèques": ["Django", "Next.js", "JavaFX", "Pygame", "Manim", "MoviePy", "Playwright"],
+              "Bases de données": ["MySQL", "SQLite"],
+              "Outils & Plateformes": ["Git", "GitHub", "API MetaTrader 5", "API OpenAI", "API ElevenLabs", "FFMPEG"]
+          },
+          hero: {
+            headline: "Sami Hilali.",
+            subheadline: "Je construis des solutions logicielles intelligentes qui automatisent les processus et créent une valeur tangible pour les entreprises.",
+            buttons: {
+                github: "Voir mon Travail sur GitHub",
+                linkedin: "Se Connecter sur LinkedIn",
+                contact: "Me Contacter"
             }
           },
-          skills: ["TypeScript", "React", "Next.js", "Node.js", "GraphQL", "Tailwind CSS", "Figma", "Firebase", "AWS"],
-          hero: {
-            greeting: "Bonjour, je m'appelle",
-            headline: "Alex Bryant.",
-            subheadline: "Je construis des choses pour le web.",
-            intro: "Je suis un ingénieur frontend senior spécialisé dans la création d'applications web performantes, accessibles et esthétiques. J'adore donner vie aux idées avec du code.",
-            button: "Contactez-moi",
-          },
           about: {
-            title: "À propos de moi",
-            techIntro: "Voici quelques technologies avec lesquelles j'ai travaillé récemment :",
-          },
-          experience: {
-            title: "Où j'ai travaillé",
-            experiences: [
-              {
-                role: "Ingénieur Frontend Senior",
-                company: "Innovate Inc.",
-                period: "2020 - Aujourd'hui",
-                description: [
-                  "Dirigé le développement d'un nouveau système de design, améliorant la réutilisation des composants et la vitesse de développement de 30%.",
-                  "Conçu et construit le frontend d'un produit phare, utilisé par plus d'un million d'utilisateurs.",
-                  "Encadré les ingénieurs juniors, effectué des revues de code et promu les meilleures pratiques en React et TypeScript.",
-                ],
-              },
-              {
-                role: "Développeur Frontend",
-                company: "Tech Solutions",
-                period: "2017 - 2020",
-                description: [
-                  "Développé et maintenu des fonctionnalités pour une application SaaS à grande échelle en utilisant React et Redux.",
-                  "Collaboré avec les designers UI/UX pour traduire les maquettes en code responsive de haute qualité.",
-                  "Amélioré les performances de l'application de 20% grâce aux techniques de code splitting et de chargement différé.",
-                ],
-              },
-              {
-                role: "Développeur Web",
-                company: "Creative Agency",
-                period: "2015 - 2017",
-                description: [
-                  "Créé des thèmes et plugins WordPress personnalisés pour une clientèle variée.",
-                  "Travaillé en étroite collaboration avec les clients pour recueillir les besoins et livrer les projets à temps et dans le respect du budget.",
-                  "Acquis une expérience fondamentale en HTML, CSS, JavaScript et PHP.",
-                ],
-              },
-            ],
+            title: "Ma Philosophie",
+            techIntro: "Ma boîte à outils technique comprend :",
           },
           projects: {
-            title: "Mes réalisations",
-            featured: "Projet en vedette",
+            title: "Produits & Solutions en Vedette",
+            featured: "Projet en Vedette",
             projects: [
               {
-                title: "Projet Alpha",
-                description: "Une application web complète pour la gestion de l'analyse de données d'entreprise. Comprend un tableau de bord dynamique, une visualisation de données en temps réel et un système d'authentification robuste.",
-                tags: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL"],
-                imageUrl: "https://picsum.photos/seed/alpha/600/400",
-                liveUrl: "#",
-                sourceUrl: "#",
+                title: "Gestion-de-Stock : Système de gestion multi-interface",
+                description: "Une application de bureau complète développée pour l'institution marocaine FSR afin de numériser et d'automatiser leur gestion des stocks, de la facturation des fournisseurs à la génération des bons de livraison. Les fonctionnalités clés incluent un accès basé sur les rôles, la génération automatisée de documents et un suivi complet du cycle de vie des produits.",
+                tags: ["JavaFX", "MySQL", "App Desktop", "Solution d'entreprise"],
               },
               {
-                title: "Projet Beta",
-                description: "Une plateforme e-commerce axée sur l'expérience utilisateur et la performance. Intégrée avec Stripe pour les paiements et construite avec un CMS headless pour une gestion de contenu facile.",
-                tags: ["Next.js", "Tailwind CSS", "Stripe", "GraphQL", "Vercel"],
-                imageUrl: "https://picsum.photos/seed/beta/600/400",
-                liveUrl: "#",
-                sourceUrl: "#",
+                title: "Pipeline de Création de Contenu par IA",
+                description: "Un système automatisé qui transforme des articles de presse bruts en contenu attrayant et prêt pour la vidéo en exploitant plusieurs services d'IA pour la scénarisation, la voix off et la génération d'images. Le pipeline utilise l'API News, GPT pour les scripts, ElevenLabs pour la voix et Python pour l'assemblage vidéo automatisé.",
+                tags: ["Python", "IA/ML", "GPT", "API ElevenLabs", "Automatisation"],
               },
               {
-                title: "Projet Gamma",
-                description: "Un éditeur de documents collaboratif en temps réel inspiré de Google Docs, construit avec WebSockets pour une interaction multi-utilisateurs fluide et une interface utilisateur épurée.",
-                tags: ["React", "Firebase", "WebSockets", "TipTap"],
-                imageUrl: "https://picsum.photos/seed/gamma/600/400",
-                liveUrl: "#",
+                title: "Bot Avito & Analyseur d'Offres par IA",
+                description: "Un bot intelligent qui scrape le plus grand marché du Maroc (Avito.ma) et utilise l'IA pour identifier les opportunités de revente rentables. Il automatise la recherche de marché avec Playwright, analyse le potentiel de revente, et stocke les résultats dans une base de données SQLite.",
+                tags: ["Python", "Playwright", "IA/ML", "SQLite", "Web Scraping"],
+              },
+              {
+                title: "Application Web d'Évaluation de Carrière par IA",
+                description: "Une application web full-stack qui recommande des carrières idéales en engageant les utilisateurs dans une conversation dynamique, en s'appuyant sur une IA avec mémoire pour personnaliser l'expérience. Dispose d'un frontend moderne Next.js et d'un backend puissant Django.",
+                tags: ["Next.js", "Django", "API OpenAI", "Full-Stack"],
               },
             ],
           },
           contact: {
-            preTitle: "04. Et après ?",
-            title: "Contactez-moi",
-            paragraph: "Je suis actuellement ouvert à de nouvelles opportunités et ma boîte de réception est toujours ouverte. Que vous ayez une question ou que vous vouliez simplement dire bonjour, je ferai de mon mieux pour vous répondre !",
-            button: "Dites bonjour",
+            preTitle: "Connectons-nous",
+            title: "Construisons Quelque Chose de Précieux Ensemble",
+            paragraph: "Je développe actuellement mes propres produits SaaS et je suis ouvert à discuter d'opportunités de freelance ou de consultation pour des projets stimulants. Si vous avez un problème commercial qui peut être résolu avec un logiciel, parlons-en.",
+            button: "Envoyer un E-mail",
           },
           footer: {
-            credit: "Conçu et réalisé par Alex Bryant",
+            credit: "Conçu & Réalisé par Sami Hilali",
           },
-        }
+        },
       };
 
-      // --- From contexts/LanguageContext.tsx ---
-      const { createContext, useState, useEffect, useContext } = React;
-      const LanguageContext = createContext(undefined);
+      // --- Language Context ---
+      const LanguageContext = React.createContext();
 
       const LanguageProvider = ({ children }) => {
-        const [locale, setLocale] = useState('en');
+        const [locale, setLocale] = React.useState('en');
 
-        useEffect(() => {
+        React.useEffect(() => {
           const savedLocale = localStorage.getItem('portfolio-locale');
           if (savedLocale && ['en', 'fr'].includes(savedLocale)) {
             setLocale(savedLocale);
@@ -286,13 +250,8 @@
         );
       };
 
-      const useLanguage = () => {
-        const context = useContext(LanguageContext);
-        if (context === undefined) {
-          throw new Error('useLanguage must be used within a LanguageProvider');
-        }
-        return context;
-      };
+      const useLanguage = () => React.useContext(LanguageContext);
+
 
       // --- From components/icons ---
       const GitHubIcon = (props) => (
@@ -330,7 +289,6 @@
       const Header = () => {
         const { locale, setLocale } = useLanguage();
         const { navLinks, header } = content[locale];
-
         const [isScrolled, setIsScrolled] = React.useState(false);
         const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -348,14 +306,15 @@
         };
 
         const toggleLanguage = () => {
-          setLocale(locale === 'en' ? 'fr' : 'en');
+            setLocale(locale === 'en' ? 'fr' : 'en');
+            setIsMenuOpen(false);
         };
 
         return (
           <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-light-navy/80 shadow-lg backdrop-blur-sm' : 'bg-transparent'}`}>
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
               <a href="#" className="text-2xl font-mono text-cyan font-bold transition-transform hover:scale-105" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                AB
+                SH
               </a>
               
               <div className="hidden md:flex items-center space-x-6">
@@ -364,11 +323,11 @@
                     <span className="text-cyan">0{index + 1}.</span> {link.name}
                   </button>
                 ))}
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300">
-                  {header.resume}
+                <a href={staticData.personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300">
+                  {header.githubProfile}
                 </a>
-                <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300 uppercase">
-                  {locale === 'en' ? 'fr' : 'en'}
+                <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300 uppercase w-12">
+                    {locale === 'en' ? 'fr' : 'en'}
                 </button>
               </div>
 
@@ -392,11 +351,11 @@
                     <span className="text-cyan">0{index + 1}.</span> {link.name}
                   </button>
                 ))}
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg">
-                  {header.resume}
+                <a href={staticData.personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg">
+                  {header.githubProfile}
                 </a>
-                <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg uppercase">
-                  {locale === 'en' ? 'fr' : 'en'}
+                <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg uppercase w-24">
+                    {locale === 'en' ? 'Français' : 'English'}
                 </button>
               </div>
             </div>
@@ -416,28 +375,22 @@
         return (
           <section id="hero" className="min-h-screen flex flex-col justify-center items-start">
             <div className="max-w-3xl">
-              <p className="text-cyan font-mono mb-4 text-base md:text-lg">{hero.greeting}</p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-lightest-slate mb-4">
                 {hero.headline}
               </h1>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate mb-8">
                 {hero.subheadline}
               </h2>
-              <p className="text-base md:text-lg lg:text-xl text-slate max-w-xl mb-12">
-                {hero.intro}
-              </p>
-              <div className="flex items-center space-x-6">
-                  <button onClick={scrollToContact} className="font-mono text-lg border border-cyan text-cyan px-8 py-4 rounded hover:bg-cyan/10 transition-colors duration-300">
-                      {hero.button}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <a href={staticData.personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="font-mono text-base border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 w-full sm:w-auto text-center">
+                      {hero.buttons.github}
+                  </a>
+                  <a href={staticData.personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" className="font-mono text-base border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 w-full sm:w-auto text-center">
+                      {hero.buttons.linkedin}
+                  </a>
+                  <button onClick={scrollToContact} className="font-mono text-base border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 w-full sm:w-auto">
+                      {hero.buttons.contact}
                   </button>
-                  <div className="flex items-center space-x-4">
-                      <a href={personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
-                          <GitHubIcon className="w-7 h-7" />
-                      </a>
-                      <a href={personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
-                          <LinkedInIcon className="w-7 h-7" />
-                      </a>
-                  </div>
               </div>
             </div>
           </section>
@@ -454,21 +407,33 @@
             <SectionTitle number="1" title={about.title} />
             <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
               <div className="md:col-span-3 text-lg text-slate space-y-4">
-                  <p>{personalInfo.bio}</p>
-                  <p>{about.techIntro}</p>
-                  <ul className="grid grid-cols-2 gap-2 font-mono text-sm">
-                      {skills.map(skill => (
-                          <li key={skill} className="flex items-center before:content-['▹'] before:text-cyan before:mr-2">
-                              {skill}
-                          </li>
+                  <p>{personalInfo.philosophy}</p>
+                  <p className="mt-6">{about.techIntro}</p>
+                  <div className="space-y-4 font-mono text-sm">
+                      {Object.entries(skills).map(([category, skillList]) => (
+                          <div key={category}>
+                              <h3 className="text-light-slate font-semibold mb-2">{category}:</h3>
+                              <ul className="flex flex-wrap gap-x-4 gap-y-2">
+                                  {skillList.map(skill => (
+                                      <li key={skill} className="flex items-center bg-lightest-navy px-3 py-1 rounded-full">
+                                          <span className="text-cyan mr-2">▹</span>
+                                          <span>{skill}</span>
+                                      </li>
+                                  ))}
+                              </ul>
+                          </div>
                       ))}
-                  </ul>
+                  </div>
               </div>
               <div className="md:col-span-2 flex justify-center items-start">
                   <div className="relative w-64 h-64 sm:w-72 sm:h-72 group">
                       <div className="absolute inset-0 bg-cyan rounded-md transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                      {/* 
+                        TODO: Replace YOUR_USER_ID with your GitHub user ID number. 
+                        For example: https://avatars.githubusercontent.com/u/9919 
+                      */}
                       <img 
-                          src={`https://picsum.photos/seed/profile/400/400`}
+                          src={`https://avatars.githubusercontent.com/u/68377147`}
                           alt={personalInfo.name}
                           className="absolute inset-0 w-full h-full object-cover rounded-md filter grayscale hover:grayscale-0 transition-all duration-300 -translate-x-4 -translate-y-4 group-hover:-translate-x-2 group-hover:-translate-y-2"
                       />
@@ -478,101 +443,45 @@
           </section>
         );
       };
-
-      // --- From components/Experience.tsx ---
-      const Experience = () => {
-        const { locale } = useLanguage();
-        const { experience } = content[locale];
-        const [activeTab, setActiveTab] = React.useState(0);
-
-        return (
-          <section id="experience" className="py-24 max-w-4xl mx-auto">
-            <SectionTitle number="2" title={experience.title} />
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible">
-                {experience.experiences.map((exp, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTab(index)}
-                    className={`font-mono text-sm w-full text-left p-3 whitespace-nowrap border-b-2 md:border-b-0 md:border-l-2 transition-colors duration-300 ${
-                      activeTab === index
-                        ? 'bg-lightest-navy text-cyan border-cyan'
-                        : 'border-light-navy text-slate hover:bg-lightest-navy/50 hover:text-cyan'
-                    }`}
-                  >
-                    {exp.company}
-                  </button>
-                ))}
-              </div>
-              <div className="flex-grow">
-                {experience.experiences.map((exp, index) => (
-                  <div
-                    key={index}
-                    className={`${activeTab === index ? 'block' : 'hidden'}`}
-                  >
-                    <h3 className="text-xl font-bold text-lightest-slate">
-                      {exp.role} <span className="text-cyan">@ {exp.company}</span>
-                    </h3>
-                    <p className="font-mono text-sm text-slate mb-4 mt-1">{exp.period}</p>
-                    <ul className="space-y-2">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-cyan mr-3 mt-1">▹</span>
-                          <span className="text-slate">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      };
       
       // --- From components/Projects.tsx ---
-      const ProjectCard = ({ project, isFeatured, index }) => {
-          const { locale } = useLanguage();
-          const { projects: projectsContent } = content[locale];
+      const ProjectCard = ({ project, index }) => {
           const isOdd = index % 2 !== 0;
+          const projectData = staticData.projects[`p${index+1}`];
 
-          if (isFeatured) {
-              return (
-                  <div className="grid grid-cols-12 gap-4 items-center mb-16">
-                      <div className={`relative col-span-12 md:col-span-7 ${isOdd ? 'md:order-last' : ''}`}>
-                          <a href={project.liveUrl || project.sourceUrl || '#'} target="_blank" rel="noopener noreferrer" className="block group">
-                              <div className="absolute inset-0 bg-cyan/40 rounded-md z-10 group-hover:bg-transparent transition-colors duration-300"></div>
-                              <img src={project.imageUrl} alt={project.title} className="rounded-md w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"/>
-                          </a>
+          return (
+              <div className="grid grid-cols-12 gap-4 items-center mb-16">
+                  <div className={`relative col-span-12 md:col-span-7 ${isOdd ? 'md:order-last' : ''}`}>
+                      <a href={projectData.sourceUrl || '#'} target="_blank" rel="noopener noreferrer" className="block group">
+                          <div className="absolute inset-0 bg-cyan/40 rounded-md z-10 group-hover:bg-transparent transition-colors duration-300"></div>
+                          <img src={projectData.imageUrl} alt={project.title} className="rounded-md w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"/>
+                      </a>
+                  </div>
+                  <div className={`col-span-12 md:col-span-5 z-20 ${isOdd ? 'text-left md:text-right' : 'text-left'}`}>
+                      <h3 className="text-2xl font-bold text-lightest-slate mb-4 hover:text-cyan transition-colors">
+                          <a href={projectData.sourceUrl || '#'} target="_blank" rel="noopener noreferrer">{project.title}</a>
+                      </h3>
+                      <div className="bg-light-navy p-6 rounded-md shadow-lg mb-4">
+                          <p className="text-slate">{project.description}</p>
                       </div>
-                      <div className={`col-span-12 md:col-span-5 z-20 ${isOdd ? 'text-left md:text-right' : 'text-left'}`}>
-                          <p className="text-cyan font-mono text-sm">{projectsContent.featured}</p>
-                          <h3 className="text-2xl font-bold text-lightest-slate mb-4 hover:text-cyan transition-colors">
-                              <a href={project.liveUrl || project.sourceUrl || '#'} target="_blank" rel="noopener noreferrer">{project.title}</a>
-                          </h3>
-                          <div className="bg-light-navy p-6 rounded-md shadow-lg mb-4">
-                              <p className="text-slate">{project.description}</p>
-                          </div>
-                          <ul className={`flex flex-wrap gap-x-4 gap-y-1 font-mono text-sm text-light-slate mb-4 ${isOdd ? 'justify-end' : 'justify-start'}`}>
-                              {project.tags.map(tag => <li key={tag}>{tag}</li>)}
-                          </ul>
-                          <div className={`flex items-center gap-4 ${isOdd ? 'justify-end' : 'justify-start'}`}>
-                              {project.sourceUrl && (
-                                  <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors">
-                                      <GitHubIcon className="w-6 h-6" />
-                                  </a>
-                              )}
-                              {project.liveUrl && (
-                                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors">
-                                      <ExternalLinkIcon className="w-6 h-6" />
-                                  </a>
-                              )}
-                          </div>
+                      <ul className={`flex flex-wrap gap-x-4 gap-y-1 font-mono text-sm text-light-slate mb-4 ${isOdd ? 'justify-end' : 'justify-start'}`}>
+                          {project.tags.map(tag => <li key={tag}>{tag}</li>)}
+                      </ul>
+                      <div className={`flex items-center gap-4 ${isOdd ? 'justify-end' : 'justify-start'}`}>
+                          {projectData.sourceUrl && (
+                              <a href={projectData.sourceUrl} target="_blank" rel="noopener noreferrer" title="View Code on GitHub" className="text-slate hover:text-cyan transition-colors">
+                                  <GitHubIcon className="w-6 h-6" />
+                              </a>
+                          )}
+                           {projectData.youtubeUrl && (
+                              <a href={projectData.youtubeUrl} target="_blank" rel="noopener noreferrer" title="View Example Output on YouTube" className="text-slate hover:text-cyan transition-colors">
+                                  <ExternalLinkIcon className="w-6 h-6" />
+                              </a>
+                          )}
                       </div>
                   </div>
-              );
-          }
-          return null;
+              </div>
+          );
       }
 
       const Projects = () => {
@@ -581,10 +490,10 @@
 
         return (
           <section id="projects" className="py-24">
-            <SectionTitle number="3" title={projectsContent.title} />
+            <SectionTitle number="2" title={projectsContent.title} />
             <div>
               {projectsContent.projects.map((project, index) => (
-                <ProjectCard key={project.title} project={project} isFeatured={true} index={index} />
+                <ProjectCard key={project.title} project={project} index={index} />
               ))}
             </div>
           </section>
@@ -594,7 +503,7 @@
       // --- From components/Contact.tsx ---
       const Contact = () => {
         const { locale } = useLanguage();
-        const { contact, personalInfo } = content[locale];
+        const { contact } = content[locale];
 
         return (
           <section id="contact" className="py-24 text-center max-w-2xl mx-auto">
@@ -604,7 +513,7 @@
               {contact.paragraph}
             </p>
             <a
-              href={`mailto:${personalInfo.email}`}
+              href={`mailto:${staticData.personalInfo.email}`}
               className="font-mono inline-block text-lg border border-cyan text-cyan px-8 py-4 rounded hover:bg-cyan/10 transition-colors duration-300"
             >
               {contact.button}
@@ -616,15 +525,15 @@
       // --- From components/Footer.tsx ---
       const Footer = () => {
         const { locale } = useLanguage();
-        const { footer, personalInfo } = content[locale];
+        const { footer } = content[locale];
 
         return (
           <footer className="py-6 text-center">
             <div className="flex justify-center items-center space-x-6 md:hidden mb-4">
-              <a href={personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
+              <a href={staticData.personalInfo.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
                 <GitHubIcon className="w-6 h-6" />
               </a>
-              <a href={personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
+              <a href={staticData.personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate hover:text-cyan transition-colors duration-300">
                 <LinkedInIcon className="w-6 h-6" />
               </a>
             </div>
@@ -643,7 +552,6 @@
             <main className="px-6 sm:px-12 md:px-24 lg:px-36 xl:px-48 2xl:px-64 mx-auto w-full">
               <Hero />
               <About />
-              <Experience />
               <Projects />
               <Contact />
             </main>

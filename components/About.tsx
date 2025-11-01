@@ -1,6 +1,6 @@
+
 import React from 'react';
-import { content } from '../constants';
-import { useLanguage } from '../contexts/LanguageContext';
+import { PERSONAL_INFO, SKILLS } from '../constants';
 
 const SectionTitle: React.FC<{ number: string; title: string }> = ({ number, title }) => (
     <h2 className="text-2xl md:text-3xl font-bold text-lightest-slate flex items-center mb-10 w-full">
@@ -12,18 +12,15 @@ const SectionTitle: React.FC<{ number: string; title: string }> = ({ number, tit
 
 
 const About: React.FC = () => {
-  const { locale } = useLanguage();
-  const { about, personalInfo, skills } = content[locale];
-
   return (
     <section id="about" className="py-24">
-      <SectionTitle number="1" title={about.title} />
+      <SectionTitle number="1" title="About Me" />
       <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
         <div className="md:col-span-3 text-lg text-slate space-y-4">
-            <p>{personalInfo.bio}</p>
-            <p>{about.techIntro}</p>
+            <p>{PERSONAL_INFO.bio}</p>
+            <p>Here are a few technologies I've been working with recently:</p>
             <ul className="grid grid-cols-2 gap-2 font-mono text-sm">
-                {skills.map(skill => (
+                {SKILLS.map(skill => (
                     <li key={skill} className="flex items-center before:content-['▹'] before:text-cyan before:mr-2">
                         {skill}
                     </li>
@@ -35,7 +32,7 @@ const About: React.FC = () => {
                 <div className="absolute inset-0 bg-cyan rounded-md transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
                 <img 
                     src={`https://picsum.photos/seed/profile/400/400`}
-                    alt={personalInfo.name}
+                    alt="Alex Bryant"
                     className="absolute inset-0 w-full h-full object-cover rounded-md filter grayscale hover:grayscale-0 transition-all duration-300 -translate-x-4 -translate-y-4 group-hover:-translate-x-2 group-hover:-translate-y-2"
                 />
             </div>

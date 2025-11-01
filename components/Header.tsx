@@ -1,11 +1,14 @@
+
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { content } from '../constants';
+
+const navLinks = [
+  { name: 'About', id: 'about' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'Contact', id: 'contact' },
+];
 
 const Header: React.FC = () => {
-  const { locale, setLocale } = useLanguage();
-  const { navLinks, header } = content[locale];
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -20,10 +23,6 @@ const Header: React.FC = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
-  };
-
-  const toggleLanguage = () => {
-    setLocale(locale === 'en' ? 'fr' : 'en');
   };
 
   return (
@@ -41,11 +40,8 @@ const Header: React.FC = () => {
             </button>
           ))}
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300">
-            {header.resume}
+            Resume
           </a>
-          <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-4 py-2 rounded hover:bg-cyan/10 transition-colors duration-300 uppercase">
-            {locale === 'en' ? 'fr' : 'en'}
-          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -71,11 +67,8 @@ const Header: React.FC = () => {
             </button>
           ))}
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg">
-            {header.resume}
+            Resume
           </a>
-          <button onClick={toggleLanguage} className="font-mono border border-cyan text-cyan px-6 py-3 rounded hover:bg-cyan/10 transition-colors duration-300 text-lg uppercase">
-            {locale === 'en' ? 'fr' : 'en'}
-          </button>
         </div>
       </div>
     </header>

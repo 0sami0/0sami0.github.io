@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
-import { content } from '../constants';
-import { useLanguage } from '../contexts/LanguageContext';
+import { EXPERIENCES } from '../constants';
 
 const SectionTitle: React.FC<{ number: string; title: string }> = ({ number, title }) => (
     <h2 className="text-2xl md:text-3xl font-bold text-lightest-slate flex items-center mb-10 w-full">
@@ -11,16 +11,14 @@ const SectionTitle: React.FC<{ number: string; title: string }> = ({ number, tit
 );
 
 const Experience: React.FC = () => {
-  const { locale } = useLanguage();
-  const { experience } = content[locale];
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <section id="experience" className="py-24 max-w-4xl mx-auto">
-      <SectionTitle number="2" title={experience.title} />
+      <SectionTitle number="2" title="Where I've Worked" />
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible">
-          {experience.experiences.map((exp, index) => (
+          {EXPERIENCES.map((exp, index) => (
             <button
               key={index}
               onClick={() => setActiveTab(index)}
@@ -35,7 +33,7 @@ const Experience: React.FC = () => {
           ))}
         </div>
         <div className="flex-grow">
-          {experience.experiences.map((exp, index) => (
+          {EXPERIENCES.map((exp, index) => (
             <div
               key={index}
               className={`${activeTab === index ? 'block' : 'hidden'}`}

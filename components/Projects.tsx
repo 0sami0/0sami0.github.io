@@ -1,7 +1,7 @@
+
 import React from 'react';
-import { content } from '../constants';
+import { PROJECTS } from '../constants';
 import { Project } from '../types';
-import { useLanguage } from '../contexts/LanguageContext';
 import GitHubIcon from './icons/GitHubIcon';
 import ExternalLinkIcon from './icons/ExternalLinkIcon';
 
@@ -14,8 +14,6 @@ const SectionTitle: React.FC<{ number: string; title: string }> = ({ number, tit
 );
 
 const ProjectCard: React.FC<{ project: Project; isFeatured: boolean; index: number }> = ({ project, isFeatured, index }) => {
-    const { locale } = useLanguage();
-    const { projects: projectsContent } = content[locale];
     const isOdd = index % 2 !== 0;
 
     if (isFeatured) {
@@ -28,7 +26,7 @@ const ProjectCard: React.FC<{ project: Project; isFeatured: boolean; index: numb
                     </a>
                 </div>
                 <div className={`col-span-12 md:col-span-5 z-20 ${isOdd ? 'text-left md:text-right' : 'text-left'}`}>
-                    <p className="text-cyan font-mono text-sm">{projectsContent.featured}</p>
+                    <p className="text-cyan font-mono text-sm">Featured Project</p>
                     <h3 className="text-2xl font-bold text-lightest-slate mb-4 hover:text-cyan transition-colors">
                         <a href={project.liveUrl || project.sourceUrl || '#'} target="_blank" rel="noopener noreferrer">{project.title}</a>
                     </h3>
@@ -60,14 +58,11 @@ const ProjectCard: React.FC<{ project: Project; isFeatured: boolean; index: numb
 }
 
 const Projects: React.FC = () => {
-  const { locale } = useLanguage();
-  const { projects: projectsContent } = content[locale];
-
   return (
     <section id="projects" className="py-24">
-      <SectionTitle number="3" title={projectsContent.title} />
+      <SectionTitle number="3" title="Things I've Built" />
       <div>
-        {projectsContent.projects.map((project, index) => (
+        {PROJECTS.map((project, index) => (
           <ProjectCard key={project.title} project={project} isFeatured={true} index={index} />
         ))}
       </div>
